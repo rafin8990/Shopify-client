@@ -4,12 +4,14 @@ import Home from "../../Pages/Home/Home";
 import Main from "../../Pages/Layouts/Main/Main";
 import Login from "../../Pages/Registration/Login/Login";
 import Register from "../../Pages/Registration/Register/Register";
+import ErrorElements from "../../Pages/Shered/ErrorElements/ErrorElements";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router=createBrowserRouter([
     {
        path:'/',
        element:<Main></Main>,
+       errorElement:<ErrorElements></ErrorElements>,
        children:([
         {
             path:'/',
