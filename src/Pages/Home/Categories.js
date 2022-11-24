@@ -26,13 +26,14 @@ const Categories = () => {
                             <img className='h-72 w-full rounded-xl' src={category?.image} alt="" />
                         </div>
                         <div>
-                            <Link to={`/category/${category?.categoryName}`}><h1 className='text-2xl font-bold flex justify-center items-center my-5 btn'>{category?.categoryName}</h1></Link>
+                            <Link to={`/category/${category?.categoryName}`}><h1 className='text-2xl font-bold flex justify-center items-center mt-5 btn'>{category?.categoryName}</h1></Link>
                         </div>
                     </div>)
                 }
 
 
             </div>
+            
         </div>
     );
 };

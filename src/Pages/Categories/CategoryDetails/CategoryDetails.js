@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CategoryDetails = ({ category }) => {
+const CategoryDetails = ({ category,setCategoryData }) => {
 
     const { NewPrice, picture, name, company, location, Years, Seller, post, ResalePrice } = category
     return (
@@ -23,7 +23,7 @@ const CategoryDetails = ({ category }) => {
                     </div>
                     <p className='text-center'>Post Time: {post}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn w-full">Book Now</button>
+                        <label onClick={()=>setCategoryData(category)} htmlFor="category-modal" className="btn w-full">Book Now</label>
                     </div>
                 </div>
             </div>
