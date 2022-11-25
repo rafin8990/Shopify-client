@@ -22,7 +22,6 @@ const Allseller = () => {
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Name</th>
                             <th>Email</th>
                             <th>Delete User</th>
                         </tr>
@@ -31,7 +30,6 @@ const Allseller = () => {
                         {
                             users?.map((user, i) => <tr key={user?._id}>
                                 <th>{i+1}</th>
-                                <td>{user?.name}</td>
                                 <td>{user?.email}</td>
                                 <td><button className='btn btn-sm'>Delete</button></td>
                             </tr>)
