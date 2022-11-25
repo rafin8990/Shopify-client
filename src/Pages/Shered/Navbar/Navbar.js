@@ -18,6 +18,7 @@ const Navbar = () => {
                             <li><Link to='/'>Home</Link></li>
                             <li><Link>Blog</Link></li>
                             <li><Link to='/addproduct'>Add Product</Link></li>
+                            <li><Link to='/myorders'>My Orders</Link></li>
                         </ul>
                     </div>
                     <img className=' w-40' src={logo} alt="" />
@@ -27,6 +28,7 @@ const Navbar = () => {
                         <li><Link to='/'>Home</Link></li>
                         <li><Link>Blog</Link></li>
                         <li><Link to='/addproduct'>Add Product</Link></li>
+                        <li><Link to='/myorders'>My Orders</Link></li>
                     </ul>
                 </div>
                 <div className="navbar-end">
