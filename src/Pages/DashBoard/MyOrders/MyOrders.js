@@ -1,40 +1,65 @@
-import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvaider/AuthProvider';
+
 
 const MyOrders = () => {
+
+    const { user } = useContext(AuthContext)
+
+    const { data: bookings = [] } = useQuery({
+        queryKey: ['booking', user?.email],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/booking?email=${user?.email}`,{
+                headers: {
+                  authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+              })
+            const data = await res.json();
+            console.log(data)
+            return data
+        }
+    })
+
     return (
         <div>
             <div className="overflow-x-auto">
                 <table className="table w-full">
-                  
+
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Price</th>
+                            <th>Pay</th>
                         </tr>
                     </thead>
-                    <tbody> 
-                        <tr>
-                            <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Blue</td>
-                        </tr>
-                        
-                        <tr className="hover">
-                            <th>2</th>
-                            <td>Hart Hagerty</td>
-                            <td>Desktop Support Technician</td>
-                            <td>Purple</td>
-                        </tr>
-                        
-                        <tr>
-                            <th>3</th>
-                            <td>Brice Swyre</td>
-                            <td>Tax Accountant</td>
-                            <td>Red</td>
-                        </tr>
+                    <tbody>
+                        {
+                            bookings?.map((booking, i) => <tr key={booking?._id}>
+                                <th>{i + 1}</th>
+                                <td>
+                                    <div className="w-24 rounded-full">
+                                        <img src={booking.picture} alt='' />
+                                    </div>
+                                </td>
+                                <td>{booking?.itemName}</td>
+                                <td>{booking?.price}</td>
+                                <td>
+                                    {
+                                        booking.price && !booking.paid &&
+                                        <td className='bg-white text-black'><Link to={`/dashboard/payment/${booking?._id}`}><button className='btn btn-sm btn-primary'>Pay</button></Link></td>
+                                    }
+                                    {
+                                        booking?.price && booking?.paid &&
+                                        <td className='bg-white text-black'><button className='btn btn-sm btn-primary'>Paid</button></td>
+                                    }
+                                </td>
+                            </tr>)
+                        }
+
                     </tbody>
                 </table>
             </div>

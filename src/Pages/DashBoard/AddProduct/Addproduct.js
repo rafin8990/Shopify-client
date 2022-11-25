@@ -12,7 +12,7 @@ const Addproduct = () => {
     const handleAddProduct = data => {
         const image = data.image[0];
         const formdata = new FormData();
-        const date = new Date();
+        const date = new Date().toLocaleDateString();
         const email=user?.email
         formdata.append('image', image)
         const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`

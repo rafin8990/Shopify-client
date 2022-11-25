@@ -5,10 +5,9 @@ import { AuthContext } from '../../Context/AuthProvaider/AuthProvider';
 
 const BookingModal = ({ categoryData }) => {
     console.log(categoryData)
-    const { name, ResalePrice } = categoryData
-
+    const { name, ResalePrice,picture } = categoryData
     const { user } = useContext(AuthContext)
-
+    
     const handleModal = event => {
         event.preventDefault()
         const form = event.target;
@@ -22,7 +21,8 @@ const BookingModal = ({ categoryData }) => {
             itemName: itemName,
             price:price,
             mobile: mobile,
-            meetingLocation: location
+            meetingLocation: location,
+            picutre:picture
         }
         console.log(modalData)
         fetch('http://localhost:5000/booking', {
@@ -37,6 +37,7 @@ const BookingModal = ({ categoryData }) => {
                 console.log(data)
                 if (data.acknowledged) {
                     toast.success('Modal Data Updated Successfully')
+                    form.reset()
                 }
             })
 
@@ -78,7 +79,7 @@ const BookingModal = ({ categoryData }) => {
                             </div>
 
                             <div className="mt-5">
-                                <button type='submit' className="btn btn-sm">Submit</button>
+                                <button  type='submit' className="btn btn-sm">Submit</button>
                             </div>
                         </form>
                     </div>

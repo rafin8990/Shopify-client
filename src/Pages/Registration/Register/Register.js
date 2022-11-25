@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvaider/AuthProvider';
+import useToken from '../../Shered/UseToken/useToken';
 
 const Register = () => {
 
@@ -10,6 +11,12 @@ const Register = () => {
     const { createUser, googleSignIn, updateUser } = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [signUpError, setSignUpError] = useState('');
+    const [userEmail, setUserEmail]=useState('')
+    const [token]= useToken(userEmail)
+
+    if(token){
+        navigate('/')
+    }
     const handleRegister = data => {
         createUser(data.email, data.password)
             .then(result => {
@@ -19,7 +26,10 @@ const Register = () => {
                     displayName: data.name
                 }
                 updateUser(userInfo)
-                .then(()=>{})
+                .then(()=>{
+
+                   
+                })
                 .catch()
                 const role=data.option
                 const email=data.email
@@ -37,6 +47,7 @@ const Register = () => {
                 .then(res=>res.json())
                 .then(data=>{
                     console.log(data)
+                    setUserEmail(email)
                 })
 
             })
