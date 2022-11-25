@@ -1,10 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext} from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvaider/AuthProvider';
 
 const Login = () => {
-    const [loginUserEmail, setLoginUserEmail] = useState('')
     const location = useLocation()
     const navigate = useNavigate()
 
@@ -18,7 +17,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
-                setLoginUserEmail(data.email)
+               
             })
             .catch(error => console.error(error))
     }
