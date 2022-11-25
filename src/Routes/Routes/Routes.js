@@ -6,6 +6,7 @@ import Allseller from "../../Pages/DashBoard/AllSeller/Allseller";
 import MyOrders from "../../Pages/DashBoard/MyOrders/MyOrders";
 import MyProducts from "../../Pages/DashBoard/MyProducts/MyProducts";
 import Home from "../../Pages/Home/Home";
+import DashboardLayout from "../../Pages/Layouts/DashboardLayout/DashboardLayout";
 import Main from "../../Pages/Layouts/Main/Main";
 import Login from "../../Pages/Registration/Login/Login";
 import Register from "../../Pages/Registration/Register/Register";
@@ -35,27 +36,35 @@ export const router=createBrowserRouter([
             element:<PrivateRoute><Categories></Categories></PrivateRoute>,
             loader:({params})=>fetch(`http://localhost:5000/categoryitems?categoryName=${params.categoryName}`)
             
-        },
-        {
-            path:'/addproduct',
-            element:<Addproduct></Addproduct>
-        },
-        {
-            path:'/myorders',
-            element:<MyOrders></MyOrders>
-        },
-        {
-            path:'/myproducts',
-            element:<MyProducts></MyProducts>
-        },
-        {
-            path:'/allseller',
-            element:<Allseller></Allseller>
-        },
-        {
-            path:'/allbuyer',
-            element:<AllBuyer></AllBuyer>
         }
        ])
+    },
+    {
+        path:'/dashboard',
+        element:<DashboardLayout></DashboardLayout>,
+        errorElement:<ErrorElements></ErrorElements>,
+        children:[
+            {
+                path:'/dashboard',
+                element:<MyOrders></MyOrders>
+            },
+            {
+                path:'/dashboard/addproduct',
+                element:<Addproduct></Addproduct>
+            },
+            {
+                path:'/dashboard/myproducts',
+                element:<MyProducts></MyProducts>
+            },
+            {
+                path:'/dashboard/allseller',
+                element:<Allseller></Allseller>
+            },
+            {
+                path:'/dashboard/allbuyer',
+                element:<AllBuyer></AllBuyer>
+            }
+        ]
+        
     }
 ])

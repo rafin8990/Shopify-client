@@ -19,6 +19,26 @@ const Register = () => {
                     displayName: data.name
                 }
                 updateUser(userInfo)
+                .then(()=>{})
+                .catch()
+                const role=data.option
+                const email=data.email
+                const userCollection={
+                    role: role,
+                    email: email
+                }
+                fetch('http://localhost:5000/users',{
+                    method:'POST',
+                    headers:{
+                        'content-type' : 'application/json'
+                    },
+                    body:JSON.stringify(userCollection)
+                })
+                .then(res=>res.json())
+                .then(data=>{
+                    console.log(data)
+                })
+
             })
             .catch(error => {
                 console.error(error)
@@ -31,8 +51,24 @@ const Register = () => {
         googleSignIn()
             .then(result => {
                 const user = result.user;
-                console.log(user.name)
                 console.log(user)
+                const email=user.email;
+                const role= 'Buyer';
+                const Collection={
+                    email: email,
+                    role: role
+                }
+                fetch('http://localhost:5000/users',{
+                    method:'POST',
+                    headers:{
+                        'content-type' : 'application/json'
+                    },
+                    body:JSON.stringify(Collection)
+                })
+                .then(res=>res.json())
+                .then(data=>{
+                    console.log(data)
+                })
                 toast.success('user update successfully')
                 navigate('/')
             })
