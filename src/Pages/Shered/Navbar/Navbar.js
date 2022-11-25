@@ -17,7 +17,7 @@ const Navbar = () => {
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <li><Link to='/'>Home</Link></li>
                             <li><Link>Blog</Link></li>
-                            <li><Link to='/login'>Login</Link></li>
+                            <li><Link to='/addproduct'>Add Product</Link></li>
                         </ul>
                     </div>
                     <img className=' w-40' src={logo} alt="" />
@@ -26,7 +26,7 @@ const Navbar = () => {
                     <ul className="menu menu-horizontal p-0">
                         <li><Link to='/'>Home</Link></li>
                         <li><Link>Blog</Link></li>
-                        <li><Link>Blog</Link></li>
+                        <li><Link to='/addproduct'>Add Product</Link></li>
                     </ul>
                 </div>
                 <div className="navbar-end">
