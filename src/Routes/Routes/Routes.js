@@ -11,6 +11,7 @@ import Main from "../../Pages/Layouts/Main/Main";
 import Login from "../../Pages/Registration/Login/Login";
 import Register from "../../Pages/Registration/Register/Register";
 import ErrorElements from "../../Pages/Shered/ErrorElements/ErrorElements";
+import AdminRoute from "../AdminRoutes/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router=createBrowserRouter([
@@ -58,11 +59,11 @@ export const router=createBrowserRouter([
             },
             {
                 path:'/dashboard/allseller',
-                element:<Allseller></Allseller>
+                element:<AdminRoute><Allseller></Allseller></AdminRoute>
             },
             {
                 path:'/dashboard/allbuyer',
-                element:<AllBuyer></AllBuyer>
+                element:<AdminRoute><AllBuyer></AllBuyer></AdminRoute>
             }
         ]
         

@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../Context/AuthProvaider/AuthProvider';
 
 const Addproduct = () => {
-
     const { register, formState: { errors }, handleSubmit } = useForm();
     const imageHostKey = process.env.REACT_APP_IMGBB_KEY;
     const {user}=useContext(AuthContext)
@@ -56,6 +55,7 @@ const Addproduct = () => {
                             console.log(data)
                             if (data.acknowledged) {
                                 toast.success('Product Added Successfully')
+
                             }
                         })
                 }
