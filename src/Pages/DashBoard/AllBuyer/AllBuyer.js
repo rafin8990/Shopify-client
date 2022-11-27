@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 
 const AllBuyer = () => {
-    const { data: users = [] } = useQuery({
+    const { data: users = [], refetch } = useQuery({
         queryKey: ['seller'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/users?role=Buyer', {

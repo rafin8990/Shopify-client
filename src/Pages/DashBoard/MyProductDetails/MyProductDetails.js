@@ -1,7 +1,34 @@
 import React from 'react';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+
 
 const MyProductDetails = ({ product }) => {
-    const { NewPrice, picture, name, company, post, ResalePrice } = product
+    const { picture, name, company, post, ResalePrice, _id } = product;
+    const navigate=useNavigate()
+
+    const handleAdvertise=()=>{
+       
+        const advertise={
+           number:5000
+        }
+        fetch(`http://localhost:5000/advertise/${_id}`,{
+            method:"PUT",
+            headers:{
+                "content-type": "application/json",
+                authorization:`bearer ${localStorage.getItem('accessToken')}`
+            },
+            body:JSON.stringify(advertise)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+                console.log(data)
+                if(data.acknowledged){
+                    toast.success('Advertise Completed Successfully')
+                    navigate('/')
+                }
+        })
+    }
     return (
         <div>
             <div className="card card-compact  bg-base-100 shadow-xl">
@@ -22,9 +49,19 @@ const MyProductDetails = ({ product }) => {
                     <div>
                         {
                             product && product.paid ?
-                                <h1 className='text-xl text-gray-500'>This product is unavailable</h1>
+                                <h1 className='text-xl text-gray-500'>This product was sold.Not available</h1>
                                 :
-                                <button className='btn w-full'>Advertise</button>
+                                <div className=' flex justify-between items-center'>
+                                    <p className=' text-green-500'>product is available</p>
+                                {
+                                    product && product.advertise ?
+                                    <p className='text-green-500 ml-10'>Advertised Completed</p>
+                                    :
+
+                                    <button onClick={handleAdvertise} className='btn btn-sm'>Advertise</button>
+                                }
+
+                                </div>
                         }
                     </div>
                 </div>
