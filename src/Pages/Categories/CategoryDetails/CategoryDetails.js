@@ -1,16 +1,16 @@
 import React, { useContext} from 'react';
 import toast from 'react-hot-toast';
 import { FaShopify } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../../Context/AuthProvaider/AuthProvider';
 
 
+
 const CategoryDetails = ({ category, setCategoryData }) => {
     const { user } = useContext(AuthContext)
-
-   
-   
-
+    const navigate=useNavigate()
+    
     const { NewPrice, picture, name, company, location, Years, Seller, post, ResalePrice, _id, wishlistData } = category;
 
     const handleWishlist = () => {
@@ -29,6 +29,7 @@ const CategoryDetails = ({ category, setCategoryData }) => {
                 console.log(data)
                 if (data.acknowledged) {
                     toast.success('Added to wishlist successfully')
+                    navigate('/dashboard/wishlist')
 
                 }
             })
@@ -53,15 +54,15 @@ const CategoryDetails = ({ category, setCategoryData }) => {
                     </div>
                     <div className='flex justify-between'>
                         <p>Post Time: {post}</p>
-                       {
-                        wishlistData ?
-                        <> <p className='text-xl'>Wishlist Added</p></> 
-                        :
-                        <div onClick={handleWishlist} className='flex items-center btn btn-sm btn-link'>
-                        <FaShopify></FaShopify>
-                        <p>Add To Wishlist</p>
-                    </div>
-                       }
+                        {
+                            wishlistData ?
+                                <> <p className='text-xl'>Wishlist Added</p></>
+                                :
+                                <div onClick={handleWishlist} className='flex items-center btn btn-sm btn-link'>
+                                    <FaShopify></FaShopify>
+                                    <p>Add To Wishlist</p>
+                                </div>
+                        }
                     </div>
 
                     <div className="card-actions justify-end">
