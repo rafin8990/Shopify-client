@@ -5,6 +5,7 @@ import AllBuyer from "../../Pages/DashBoard/AllBuyer/AllBuyer";
 import Allseller from "../../Pages/DashBoard/AllSeller/Allseller";
 import MyOrders from "../../Pages/DashBoard/MyOrders/MyOrders";
 import MyProducts from "../../Pages/DashBoard/MyProducts/MyProducts";
+import Payment from "../../Pages/DashBoard/Payment/Payment";
 import Home from "../../Pages/Home/Home";
 import DashboardLayout from "../../Pages/Layouts/DashboardLayout/DashboardLayout";
 import Main from "../../Pages/Layouts/Main/Main";
@@ -47,7 +48,12 @@ export const router=createBrowserRouter([
         children:[
             {
                 path:'/dashboard',
-                element:<MyOrders></MyOrders>
+                element:<PrivateRoute><MyOrders></MyOrders></PrivateRoute>
+            },
+            {
+                path:'/dashboard/payment/:id',
+                element:<Payment></Payment>,
+                loader:({params})=>fetch(`http://localhost:5000/booking/${params.id}`)
             },
             {
                 path:'/dashboard/addproduct',
@@ -64,7 +70,8 @@ export const router=createBrowserRouter([
             {
                 path:'/dashboard/allbuyer',
                 element:<AdminRoute><AllBuyer></AllBuyer></AdminRoute>
-            }
+            },
+           
         ]
         
     }
