@@ -107,6 +107,9 @@ const CheakoutForm = ({paymentData}) => {
     }
     return (
         <div>
+          <div>
+          <h1 className='text-center text-4xl text-green-500'>Product Name: <span className=''> {itemName}</span></h1>
+          </div>
             <form onSubmit={handleSubmit}>
             <CardElement
                 options={{
@@ -135,6 +138,8 @@ const CheakoutForm = ({paymentData}) => {
             </div>
         }
         <p className='text-red-500'>{cardError}</p>
+
+        
         </div>
     );
 };

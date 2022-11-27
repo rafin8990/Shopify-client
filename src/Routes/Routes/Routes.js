@@ -51,10 +51,10 @@ export const router=createBrowserRouter([
                 path:'/dashboard',
                 element:<PrivateRoute><MyOrders></MyOrders></PrivateRoute>
             },
-            {
+            /* {
                 path:'/dashboard/wishlist',
                 element:<PrivateRoute><WishList></WishList></PrivateRoute>
-            },
+            }, */
             {
                 path:'/dashboard/payment/:id',
                 element:<Payment></Payment>,
