@@ -1,6 +1,6 @@
 import React from 'react';
 
-const WishLish = () => {
+const WishList = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const WishLish = () => {
     );
 };
 
-export default WishLish;
+export default WishList;

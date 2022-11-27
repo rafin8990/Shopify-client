@@ -54,7 +54,7 @@ const MyOrders = () => {
                                     }
                                     {
                                         booking?.price && booking?.paid &&
-                                        <td className='bg-white text-black'><button className='btn btn-sm btn-primary'>Paid</button></td>
+                                        <td className='bg-white text-black'><span className='text-green-500'>Paid</span></td>
                                     }
                                 </td>
                             </tr>)

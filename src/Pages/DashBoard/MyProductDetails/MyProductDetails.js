@@ -9,18 +9,18 @@ const MyProductDetails = ({product}) => {
                 <div className="card-body">
                     <h2 className="card-title">{name}</h2>
                     <div className='flex justify-between'>
-                        <p>Brand Name : {company}</p>
-                        <p>Location : {location}</p>
+                        <p><span className='font-bold'>Brand Name</span> : {company}</p>
+                        <p><span className='font-bold'>Location</span> : {location}</p>
                     </div>
                     <div className='flex justify-between'>
-                        <p>New Price : {NewPrice}</p>
-                        <p>Resale Price : {ResalePrice}</p>
+                        <p><span  className='font-bold'>New Price </span>: ${NewPrice}</p>
+                        <p><span  className='font-bold'>Resale Price </span>  : ${ResalePrice}</p>
                     </div>
                     <div className='flex justify-between'>
-                        <p>Seller Name : {Seller}</p>
-                        <p>Years of Use: {Years}</p>
+                        <p><span className='font-bold'>Seller Name</span> : {Seller}</p>
+                        <p><span className='font-bold'>Years of Use</span>: {Years}</p>
                     </div>
-                    <p className='text-center'>Post Time: {post}</p>
+                    <p className='text-center'><span className='font-bold'>Post Time</span>: {post}</p>
                     <div>
                         <button className='btn w-full'>Advertise</button>
                     </div>

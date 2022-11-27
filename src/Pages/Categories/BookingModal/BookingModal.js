@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvaider/AuthProvider';
 
 const BookingModal = ({ categoryData }) => {
-    console.log(categoryData)
-    const { name, ResalePrice,picture } = categoryData
+    const { name, ResalePrice,picture, _id } = categoryData
     const { user } = useContext(AuthContext)
+    const navigate=useNavigate()
     
     const handleModal = event => {
         event.preventDefault()
@@ -16,13 +17,15 @@ const BookingModal = ({ categoryData }) => {
         const price=form.price.value;
         const mobile=form.mobile.value;
         const location=form.location.value;
+        const categoryId= _id
         const modalData = {
             email: email,
             itemName: itemName,
             price:price,
             mobile: mobile,
             meetingLocation: location,
-            picutre:picture
+            picutre:picture,
+            categoryId:categoryId
         }
         console.log(modalData)
         fetch('http://localhost:5000/booking', {
@@ -38,6 +41,7 @@ const BookingModal = ({ categoryData }) => {
                 if (data.acknowledged) {
                     toast.success('Modal Data Updated Successfully')
                     form.reset()
+                    navigate('/dashboard')
                 }
             })
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData} from 'react-router-dom';
+
 import BookingModal from '../BookingModal/BookingModal';
 import CategoryDetails from '../CategoryDetails/CategoryDetails';
 
@@ -7,6 +8,7 @@ const Categories = () => {
     const categories = useLoaderData();
 
     const [categoryData, setCategoryData] = useState(null)
+   
 
     return (
         <div>

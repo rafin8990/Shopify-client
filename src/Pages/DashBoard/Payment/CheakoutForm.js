@@ -16,7 +16,7 @@ const CheakoutForm = ({paymentData}) => {
     const stripe=useStripe();
     const elements = useElements();
     const navigate=useNavigate()
-    const {price, email, itemName, _id}=paymentData
+    const {price, email, itemName, _id, categoryId}=paymentData
 
     useEffect(() => {
         fetch("http://localhost:5000/create-payment-intent", {
@@ -80,7 +80,8 @@ const CheakoutForm = ({paymentData}) => {
                     price,
                     transectionId:paymentIntent.id,
                     email,
-                    productId:_id
+                    productId:_id,
+                    categoryItemId: categoryId
                 }
 
                 fetch('http://localhost:5000/payment', {
@@ -98,9 +99,10 @@ const CheakoutForm = ({paymentData}) => {
                         setTransactionId(paymentIntent.id)
                         navigate('/dashboard')
                     }
-                })
-                
+                });
+
               }
+
               setProcessing(false)
     }
     return (
