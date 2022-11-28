@@ -29,6 +29,16 @@ const MyProductDetails = ({ product }) => {
                 }
             })
     }
+
+    const handleDelete=(id)=>{
+        fetch(`https://localhost:5000/categories/${id}`,{
+            method:"DELETE"
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+        })
+    }
     return (
         <div>
             <div className="hero m-5  ">
@@ -61,6 +71,7 @@ const MyProductDetails = ({ product }) => {
                                     </div>
                             }
                         </div>
+                        <button onClick={()=>handleDelete(_id)} className='btn w-full mt-5'>Delete</button>
 
                     </div>
                 </div>
