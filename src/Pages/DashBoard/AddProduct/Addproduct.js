@@ -45,7 +45,7 @@ const Addproduct = () => {
                         email:email
                     }
 
-                    fetch('https://shopify-server.vercel.app/categoryitems', {
+                    fetch('http://localhost:5000/categoryitems', {
                         method: "POST",
                         headers: {
                             'content-type': 'application/json'

@@ -12,7 +12,7 @@ const MyProductDetails = ({ product }) => {
         const advertise = {
             number: 5000
         }
-        fetch(`https://shopify-server.vercel.app/advertise/${_id}`, {
+        fetch(`http://localhost:5000/advertise/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json",
@@ -42,7 +42,7 @@ const MyProductDetails = ({ product }) => {
                         <div className='flex justify-between'>
                             <p><span className='font-bold'>Resale Price </span>  : ${ResalePrice}</p>
                         </div>
-                        <p className=''><span className='font-bold'>Post Time</span>: {post}</p>
+                        <p className='text-center'><span className='font-bold'>Post Time</span>: {post}</p>
                         <div>
                             {
                                 product && product.paid ?

@@ -28,7 +28,7 @@ const BookingModal = ({ categoryData }) => {
             categoryId:categoryId
         }
         console.log(modalData)
-        fetch('https://shopify-server.vercel.app/booking', {
+        fetch('http://localhost:5000/booking', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

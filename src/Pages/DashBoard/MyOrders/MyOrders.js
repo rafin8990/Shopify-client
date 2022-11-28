@@ -4,14 +4,15 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvaider/AuthProvider';
 
 
+
 const MyOrders = () => {
 
     const { user } = useContext(AuthContext)
 
-    const { data: bookings = [] } = useQuery({
+    const { data: bookings = []} = useQuery({
         queryKey: ['booking', user?.email],
         queryFn: async () => {
-            const res = await fetch(`https://shopify-server.vercel.app/booking?email=${user?.email}`, {
+            const res = await fetch(`http://localhost:5000/booking?email=${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -20,6 +21,7 @@ const MyOrders = () => {
             return data
         }
     })
+   
 
     return (
         <div>

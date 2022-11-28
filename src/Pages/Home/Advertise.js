@@ -9,7 +9,7 @@ const Advertise = () => {
     const { data: advertises = [] } = useQuery({
         queryKey: ['advertise'],
         queryFn: async () => {
-            const res = await fetch('https://shopify-server.vercel.app/categoryitem?advertise=advertise')
+            const res = await fetch('http://localhost:5000/categoryitem?advertise=advertise')
             const data = await res.json();
             return data
         }

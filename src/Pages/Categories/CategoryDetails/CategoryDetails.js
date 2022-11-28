@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import toast from 'react-hot-toast';
 import { FaShopify } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 
-import { AuthContext } from '../../Context/AuthProvaider/AuthProvider';
+
 
 
 
 const CategoryDetails = ({ category, setCategoryData }) => {
-    const { user } = useContext(AuthContext)
+    
     const navigate = useNavigate()
 
     const { NewPrice, picture, name, company, location, Years, Seller, post, ResalePrice, _id, wishlistData } = category;
@@ -17,8 +17,8 @@ const CategoryDetails = ({ category, setCategoryData }) => {
         const wishlistData = {
             wishlist: 'wishlist'
         }
-        fetch(`https://shopify-server.vercel.app/categoryitem/${_id}`, {
-            method: "PUT",
+        fetch(`http://localhost:5000/categoryitem/${_id}`, {
+            method: "PATCH",
             headers: {
                 "content-type": "application/json"
             },

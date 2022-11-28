@@ -19,7 +19,7 @@ const CheakoutForm = ({paymentData}) => {
     const {price, email, itemName, _id, categoryId}=paymentData
 
     useEffect(() => {
-        fetch("https://shopify-server.vercel.app/create-payment-intent", {
+        fetch("http://localhost:5000/create-payment-intent", {
           method: "POST",
           headers: {
              "Content-Type": "application/json",
@@ -84,7 +84,7 @@ const CheakoutForm = ({paymentData}) => {
                     categoryItemId: categoryId
                 }
 
-                fetch('https://shopify-server.vercel.app/payment', {
+                fetch('http://localhost:5000/payment', {
                     method: "POST",
                     headers:{
                         "content-type":"application/json",
