@@ -17,7 +17,7 @@ const CategoryDetails = ({ category, setCategoryData }) => {
         const wishlistData = {
             wishlist: 'wishlist'
         }
-        fetch(`http://localhost:5000/categoryitem/${_id}`, {
+        fetch(`https://shopify-server.vercel.app/categoryitem/${_id}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json"

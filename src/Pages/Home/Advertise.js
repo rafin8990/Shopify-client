@@ -9,7 +9,7 @@ const Advertise = () => {
     const { data: advertises = [] } = useQuery({
         queryKey: ['advertise'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/categoryitem?advertise=advertise')
+            const res = await fetch('https://shopify-server.vercel.app/categoryitem?advertise=advertise')
             const data = await res.json();
             return data
         }
@@ -29,17 +29,20 @@ const Advertise = () => {
             </div>
 
 
-            {<div>
+            {
+                <div>
                 <div></div>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
+                {/* <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                     {
                         advertises?.map(advertise => <AdvertiseDetails
                             key={advertise?._id}
                             advertise={advertise}
 
                         ></AdvertiseDetails>)}
-                </div>
-            </div>}
+                </div> */}
+            </div>
+            
+            }
         </div>
     );
 };

@@ -2,6 +2,8 @@ import React from 'react';
 import Advertise from './Advertise';
 import Banner from './Banner';
 import Categories from './Categories';
+import Contact from './Contact'
+
 
 
 const Home = () => {
@@ -10,6 +12,7 @@ const Home = () => {
             <Banner></Banner>
             <Categories></Categories>
             <Advertise></Advertise>
+            <Contact></Contact>
            
         </div>
     );

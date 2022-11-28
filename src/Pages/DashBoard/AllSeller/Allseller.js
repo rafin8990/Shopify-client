@@ -7,7 +7,7 @@ const Allseller = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['seller'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users?role=Seller', {
+            const res = await fetch('https://shopify-server.vercel.app/users?role=Seller', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -18,7 +18,7 @@ const Allseller = () => {
     })
 
     const handleDeleteSeller= (id) => {
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://shopify-server.vercel.app/users/${id}`, {
             method: 'DElETE',
         })
             .then(res => res.json())
@@ -39,6 +39,7 @@ const Allseller = () => {
                             <th></th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Verify Now</th>
                             <th>Delete User</th>
                         </tr>
                     </thead>
@@ -48,6 +49,10 @@ const Allseller = () => {
                                 <th>{i+1}</th>
                                 <th>{user?.name}</th>
                                 <td>{user?.email}</td>
+                                <td><button className='btn btn-sm'>Verify Now</button></td>
+                                {
+
+                                }
                                 <td><button onClick={()=>handleDeleteSeller(user?._id)} className='btn btn-sm'>Delete</button></td>
                             </tr>)
                         }

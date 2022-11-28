@@ -10,7 +10,7 @@ const MyProducts = () => {
  const [products, setProducts]=useState([]);
 
  useEffect(()=>{
-    axios.get(`http://localhost:5000/categories?email=${user?.email}`)
+    axios.get(`https://shopify-server.vercel.app/categories?email=${user?.email}`)
     .then(data=>{
         
         setProducts(data.data)

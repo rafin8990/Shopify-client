@@ -39,7 +39,7 @@ const Login = () => {
                     email: email,
                     role: role
                 }
-                fetch('http://localhost:5000/users', {
+                fetch('https://shopify-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -49,7 +49,7 @@ const Login = () => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
-                        
+                        navigate('/')
                     })
             })
             .catch(error => console.error(error))

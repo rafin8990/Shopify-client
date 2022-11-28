@@ -12,7 +12,7 @@ const MyProductDetails = ({ product }) => {
         const advertise = {
             number: 5000
         }
-        fetch(`http://localhost:5000/advertise/${_id}`, {
+        fetch(`https://shopify-server.vercel.app/advertise/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json",

@@ -8,7 +8,7 @@ const WishList = () => {
     const { data: wishlist = [] } = useQuery({
         queryKey: [''],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/categoryitem?wishlishData=wishlist`, {
+            const res = await fetch(`https://shopify-server.vercel.app/categoryitem?wishlishData=wishlist`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }

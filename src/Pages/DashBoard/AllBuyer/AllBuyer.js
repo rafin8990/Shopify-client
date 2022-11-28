@@ -7,7 +7,7 @@ const AllBuyer = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['Buyer'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users?role=Buyer', {
+            const res = await fetch('https://shopify-server.vercel.app/users?role=Buyer', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -18,7 +18,7 @@ const AllBuyer = () => {
     })
 
     const handleDeleteUser = (id) => {
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://shopify-server.vercel.app/users/${id}`, {
             method: 'DElETE',
         })
             .then(res => res.json())
