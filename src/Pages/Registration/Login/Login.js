@@ -33,11 +33,13 @@ const Login = () => {
                 const user = result.user;
                 console.log(user)
                 setLoginUserEmail(user.email)
+                navigate('/')
                 const email = user.email;
                 const role = 'Buyer';
                 const Collection = {
                     email: email,
-                    role: role
+                    role: role,
+                    name:user.displayName
                 }
                 fetch('https://shopify-server.vercel.app/users', {
                     method: 'POST',
@@ -49,7 +51,7 @@ const Login = () => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
-                        navigate('/')
+                       
                     })
             })
             .catch(error => console.error(error))
