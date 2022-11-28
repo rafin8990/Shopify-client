@@ -1,11 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import toast from 'react-hot-toast';
+
 
 const AllBuyer = () => {
     const { data: users = [], refetch } = useQuery({
-        queryKey: ['seller'],
+        queryKey: ['Buyer'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users?role=Buyer', {
+            const res = await fetch('https://shopify-server.vercel.app/users?role=Buyer', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -14,6 +16,20 @@ const AllBuyer = () => {
             return data
         }
     })
+
+    const handleDeleteUser = (id) => {
+        fetch(`https://shopify-server.vercel.app/users/${id}`, {
+            method: 'DElETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.deletedCount > 0){
+                    toast.success('User deleted successfully')
+                    refetch()
+                }
+        })
+    }
     return (
         <div>
             <div className="overflow-x-auto">
@@ -21,6 +37,7 @@ const AllBuyer = () => {
                     <thead>
                         <tr>
                             <th></th>
+                            <th>Name</th>
                             <th>Email</th>
                             <th>Delete User</th>
                         </tr>
@@ -29,8 +46,9 @@ const AllBuyer = () => {
                         {
                             users?.map((user, i) => <tr key={user?._id}>
                                 <th>{i + 1}</th>
+                                <th>{user?.name}</th>
                                 <td>{user?.email}</td>
-                                <td><button className='btn btn-sm'>Delete</button></td>
+                                <td><button onClick={() => handleDeleteUser(user?._id)} className='btn btn-sm'>Delete</button></td>
                             </tr>)
                         }
                     </tbody>

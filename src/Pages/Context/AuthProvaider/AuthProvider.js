@@ -35,6 +35,10 @@ const AuthProvider = ({children}) => {
 
     const updateUser=(userInfo)=>{
         return updateProfile(auth.currentUser, userInfo)
+    };
+
+    const deleteUser=()=>{
+        return deleteUser(auth.currentUser)
     }
     useEffect(()=>{
         const unsubscribe= onAuthStateChanged(auth, currentUser=>{
@@ -45,7 +49,7 @@ const AuthProvider = ({children}) => {
          
      },[]);
 
-     const authInfo={user,loading,createUser,signIn,googleSignIn,logOut,updateUser}
+     const authInfo={user,loading,createUser,signIn,googleSignIn,logOut,updateUser,deleteUser}
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

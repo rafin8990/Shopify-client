@@ -6,7 +6,7 @@ const Allseller = () => {
     const { data: users = [] } = useQuery({
         queryKey: ['seller'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users?role=Seller', {
+            const res = await fetch('https://shopify-server.vercel.app/users?role=Seller', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }

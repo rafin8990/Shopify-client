@@ -1,14 +1,14 @@
-/* import { useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import BookingModal from '../../Categories/BookingModal/BookingModal';
+
 
 const WishList = () => {
 
     const { data: wishlist = [] } = useQuery({
         queryKey: [''],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/categoryitem?wishlishData=wishlist', {
+            const res = await fetch(`https://shopify-server.vercel.app/categoryitem?wishlishData=wishlist`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -19,7 +19,7 @@ const WishList = () => {
     })
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
-            
+
             {
                 wishlist.map(wish => <div key={wish?._id} className="card card-compact  bg-base-100 shadow-xl">
                     <figure><img className=' h-60 w-full' src={wish?.picture} alt="Shoes" /></figure>
@@ -42,17 +42,17 @@ const WishList = () => {
                         </div>
 
                         <div className="card-actions justify-end">
-                            <Link to={`/dashboard/payment/${wish?._id}`}><label  className="btn btn-sm w-full">Pay Now</label></Link>
+                            <Link to={`/dashboard/payment/${wish?._id}`}><label className="btn btn-sm w-full">Pay Now</label></Link>
                         </div>
                     </div>
                 </div>)
             }
 
             <div>
-            
+
             </div>
         </div>
     );
 };
 
-export default WishList; */
+export default WishList;

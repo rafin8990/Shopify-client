@@ -33,11 +33,13 @@ const Register = () => {
                 .catch()
                 const role=data.option
                 const email=data.email
+                const name=data.name
                 const userCollection={
                     role: role,
-                    email: email
+                    email: email,
+                    name: name
                 }
-                fetch('http://localhost:5000/users',{
+                fetch('https://shopify-server.vercel.app/users',{
                     method:'POST',
                     headers:{
                         'content-type' : 'application/json'
@@ -69,7 +71,7 @@ const Register = () => {
                     email: email,
                     role: role
                 }
-                fetch('http://localhost:5000/users',{
+                fetch('https://shopify-server.vercel.app/users',{
                     method:'POST',
                     headers:{
                         'content-type' : 'application/json'

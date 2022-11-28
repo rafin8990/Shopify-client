@@ -1,4 +1,4 @@
-import React, { useContext, useState} from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvaider/AuthProvider';
@@ -9,10 +9,10 @@ const Login = () => {
     const navigate = useNavigate()
 
     const { signIn, googleSignIn } = useContext(AuthContext)
-    const [loginUserEmail, setLoginUserEmail]=useState('')
-    const [token]=useToken(loginUserEmail)
+    const [loginUserEmail, setLoginUserEmail] = useState('')
+    const [token] = useToken(loginUserEmail)
     const from = location.state?.from?.pathname || '/'
-    if(token){
+    if (token) {
         navigate(from, { replace: true });
     }
 
@@ -38,7 +38,7 @@ const Login = () => {
                     email: email,
                     role: role
                 }
-                fetch('http://localhost:5000/users', {
+                fetch('https://shopify-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -48,8 +48,8 @@ const Login = () => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
+                        navigate(from, { replace: true });
                     })
-                navigate(from, { replace: true });
             })
             .catch(error => console.error(error))
     }

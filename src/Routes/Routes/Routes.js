@@ -37,7 +37,7 @@ export const router=createBrowserRouter([
         {
             path:'/category/:categoryName',
             element:<PrivateRoute><Categories></Categories></PrivateRoute>,
-            loader:({params})=>fetch(`http://localhost:5000/categoryitems?categoryName=${params.categoryName}`)
+            loader:({params})=>fetch(`https://shopify-server.vercel.app/categoryitems?categoryName=${params.categoryName}`)
             
         }
        ])
@@ -51,14 +51,14 @@ export const router=createBrowserRouter([
                 path:'/dashboard',
                 element:<PrivateRoute><MyOrders></MyOrders></PrivateRoute>
             },
-            /* {
+            {
                 path:'/dashboard/wishlist',
                 element:<PrivateRoute><WishList></WishList></PrivateRoute>
-            }, */
+            },
             {
                 path:'/dashboard/payment/:id',
                 element:<Payment></Payment>,
-                loader:({params})=>fetch(`http://localhost:5000/booking/${params.id}`)
+                loader:({params})=>fetch(`https://shopify-server.vercel.app/booking/${params.id}`)
             },
             {
                 path:'/dashboard/addproduct',
